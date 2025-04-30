@@ -9,7 +9,8 @@ WORKDIR /app
 # Copy all files from current directory to working dir in image
 COPY . .
 # Install node modules and build assets
-RUN yarn install && yarn build
+RUN yarn config set registry https://registry.npmjs.org && \
+    yarn install && yarn build
 
 # Nginx state for serving content
 FROM nginx:alpine
